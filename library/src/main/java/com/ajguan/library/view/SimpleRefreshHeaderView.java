@@ -10,9 +10,10 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.ajguan.library.IRefreshHeader;
+import com.ajguan.library.R;
 import com.ajguan.library.State;
 
-import zaizai.com.library.R;
+
 
 public class SimpleRefreshHeaderView extends FrameLayout implements IRefreshHeader {
 

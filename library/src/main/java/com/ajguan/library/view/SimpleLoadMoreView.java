@@ -7,9 +7,10 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.ajguan.library.ILoadMoreView;
+import com.ajguan.library.R;
 import com.github.ybq.android.spinkit.SpinKitView;
 
-import zaizai.com.library.R;
+
 
 /**
  * Created by guanaj on 16/9/22.
