@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_60e76180875b5d4840624e09c30c899a75f7bf81/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -30,12 +21,66 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.github.anzaizai/EasyRefreshLayout/1.0.1/jars/classes.jar"
+        jar="/Users/zaizai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="6cb80e0d8f4433cf86ab615b25bd8fa803284cae">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.anzaizai-EasyRefreshLayout-1.0.1_3124c3d8c9b4ace3eaec8f173cb4b6cbb7bd80d5/classes.dex" />
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_22d6b5eda7988d0a94f18806a44e2fcd63b3aacd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_71b091bba297d72d632d924ad6a6ae12ab15f523/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b6de11aa7bc9e2056665ac8d8931b453f28767ef/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_5b920980d55afede6a055ecb59158674f40712a3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_adef186aefa38225b3009056d02b6cb2ed092fc3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="dcc356732ab5e2e58e5f68d66be21a009056c539">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9bf91df28fa3d27a56ddf16381670362f7b9e3e1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_60e76180875b5d4840624e09c30c899a75f7bf81/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -45,15 +90,6 @@
         revision="24.0.2"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
         <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_ad677e549ab26057b9e1770a674a9377f163abb1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/zaizai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_22d6b5eda7988d0a94f18806a44e2fcd63b3aacd/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -75,39 +111,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_71b091bba297d72d632d924ad6a6ae12ab15f523/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="6c355a49e7f7afbfdfccfa98603bdd684bfb5ec6">
+        sha1="ac44364035df88202dd911d3af5b6f75c2347d12">
         <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_65fb37206585ddd0af07d70d3eb98fb5e68972d7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b6de11aa7bc9e2056665ac8d8931b453f28767ef/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_5b920980d55afede6a055ecb59158674f40712a3/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -135,15 +144,6 @@
         revision="24.0.2"
         sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
         <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_45e24911947913acba9efac512c615f2836a2863/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_adef186aefa38225b3009056d02b6cb2ed092fc3/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -180,15 +180,6 @@
         revision="24.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_f665278e739db5f1741a4422a88860cbe7612703/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="b8e7a36b109c24b3ad8dce047f91a9a8e1a7552b">
-        <dex dex="/Users/zaizai/GitHub/EasyRefreshLayout/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9bf91df28fa3d27a56ddf16381670362f7b9e3e1/classes.dex" />
     </item>
 
 </items>
