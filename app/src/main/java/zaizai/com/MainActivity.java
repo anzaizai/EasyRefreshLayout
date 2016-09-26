@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.ajguan.R;
 import com.ajguan.library.EasyRefreshLayout;
 
 import java.util.ArrayList;

@@ -26,6 +26,6 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.1.3'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.github.ybq:Android-SpinKit:1.0.2'
-    compile 'com.github.anzaizai:EasyRefreshLayout:1.0.0'
+    compile 'com.github.anzaizai:EasyRefreshLayout:1.0.1'
 
 }

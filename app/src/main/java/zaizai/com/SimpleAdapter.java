@@ -1,5 +1,6 @@
 package zaizai.com;
 
+import com.ajguan.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
