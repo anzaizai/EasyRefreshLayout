@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Library</string>
+    <string name="header_reset">下拉刷新</string>
+    <string name="header_pull">下拉刷新</string>
+    <string name="header_pull_over">释放立即刷新</string>
+    <string name="header_refreshing">正在刷新...</string>
+    <string name="header_completed">刷新成功</string>
+</resources>
