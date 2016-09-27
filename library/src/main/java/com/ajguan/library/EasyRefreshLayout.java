@@ -675,7 +675,6 @@ public class EasyRefreshLayout extends ViewGroup {
                 super.onScrolled(recyclerView, dx, dy);
 
             }
-
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -688,6 +687,7 @@ public class EasyRefreshLayout extends ViewGroup {
                     }
                     if (isCanLoad) {
                         isLoading = true;
+                        ((ILoadMoreView) mLoadMoreView).reset();
                         Log.i(TAG, ">>>>loading");
                         mLoadMoreView.measure(0, 0);
                         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -782,10 +782,7 @@ public class EasyRefreshLayout extends ViewGroup {
         if (mLoadMoreView != null && isRecycerView) {
             setTargetOffsetTopAndBottom(mLoadMoreView.getMeasuredHeight());
             mLoadMoreView.setTranslationY(mLoadMoreView.getMeasuredHeight());
-            isLoading = false;
-            isCanLoad = false;
-            isLoadingFail = false;
-            isNotMoreLoading = false;
+            resetLoadMoreState();
 
         }
 
@@ -811,6 +808,7 @@ public class EasyRefreshLayout extends ViewGroup {
         }
         mLoadMoreView = loadMoreView;
         addView(mLoadMoreView);
+        resetLoadMoreState();
         ((ILoadMoreView) mLoadMoreView).reset();
 
         ((ILoadMoreView) mLoadMoreView).getCanClickFailView().setOnClickListener(new OnClickListener() {
@@ -838,6 +836,7 @@ public class EasyRefreshLayout extends ViewGroup {
     public void loadMoreComplete(final EasyRefreshLayout.Event event, long delayedTime) {
         ((ILoadMoreView) mLoadMoreView).loadComplete();
         if (event == null) {
+            hideLoadView();
             resetLoadMoreState();
             return;
         }
@@ -847,7 +846,6 @@ public class EasyRefreshLayout extends ViewGroup {
                 event.complete();
                 hideLoadView();
                 resetLoadMoreState();
-                ((ILoadMoreView) mLoadMoreView).reset();
             }
         }, delayedTime);
     }
@@ -862,18 +860,14 @@ public class EasyRefreshLayout extends ViewGroup {
 
     public void loadMoreFail() {
         ((ILoadMoreView) mLoadMoreView).loadFail();
+        resetLoadMoreState();
         isLoadingFail = true;
-        isCanLoad = false;
-        isLoading = false;
-        isNotMoreLoading = false;
     }
 
     public void loadNothing() {
         ((ILoadMoreView) mLoadMoreView).loadNothing();
+        resetLoadMoreState();
         isNotMoreLoading = true;
-        isLoadingFail = false;
-        isCanLoad = false;
-        isLoading = false;
     }
 
     private View getDefaultLoadMoreView() {
@@ -950,11 +944,11 @@ public class EasyRefreshLayout extends ViewGroup {
 
     }
 
-    public static long getScrollToLoadingDuration() {
+    public static long getShowLoadViewAnimatorDuration() {
         return SCROLL_TO_LOADING_DURATION;
     }
 
-    public static void setScrollToLoadingDuration(long scrollToLoadingDuration) {
+    public static void setShowLoadViewAnimatorDuration(long scrollToLoadingDuration) {
         SCROLL_TO_LOADING_DURATION = scrollToLoadingDuration;
     }
 
@@ -974,11 +968,11 @@ public class EasyRefreshLayout extends ViewGroup {
         SCROLL_TO_TOP_DURATION = scrollToTopDuration;
     }
 
-    public static long getShowCompletedTime() {
+    public static long getHideLoadViewAnimatorDuration() {
         return SHOW_COMPLETED_TIME;
     }
 
-    public static void setShowCompletedTime(long showCompletedTime) {
+    public static void setHideLoadViewAnimatorDuration(long showCompletedTime) {
         SHOW_COMPLETED_TIME = showCompletedTime;
     }
 }

@@ -84,15 +84,15 @@
       <file leaf-file-name="EasyRefreshLayout.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="779" column="10" selection-start-line="779" selection-start-column="10" selection-end-line="779" selection-end-column="10" />
+            <state relative-caret-position="10829">
+              <caret line="676" column="13" selection-start-line="676" selection-start-column="13" selection-end-line="676" selection-end-column="13" />
               <folding>
-                <element signature="e#28355#28356#0" expanded="true" />
-                <element signature="e#28393#28394#0" expanded="true" />
-                <element signature="e#28461#28462#0" expanded="true" />
-                <element signature="e#28505#28506#0" expanded="true" />
-                <element signature="e#28781#29036#0" expanded="true" />
-                <element signature="e#29035#29036#0" expanded="true" />
+                <element signature="e#28348#28349#0" expanded="true" />
+                <element signature="e#28386#28387#0" expanded="true" />
+                <element signature="e#28454#28455#0" expanded="true" />
+                <element signature="e#28498#28499#0" expanded="true" />
+                <element signature="e#28802#29000#0" expanded="true" />
+                <element signature="e#28999#29000#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -3863,15 +3863,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="779" column="10" selection-start-line="779" selection-start-column="10" selection-end-line="779" selection-end-column="10" />
+        <state relative-caret-position="10829">
+          <caret line="676" column="13" selection-start-line="676" selection-start-column="13" selection-end-line="676" selection-end-column="13" />
           <folding>
-            <element signature="e#28355#28356#0" expanded="true" />
-            <element signature="e#28393#28394#0" expanded="true" />
-            <element signature="e#28461#28462#0" expanded="true" />
-            <element signature="e#28505#28506#0" expanded="true" />
-            <element signature="e#28781#29036#0" expanded="true" />
-            <element signature="e#29035#29036#0" expanded="true" />
+            <element signature="e#28348#28349#0" expanded="true" />
+            <element signature="e#28386#28387#0" expanded="true" />
+            <element signature="e#28454#28455#0" expanded="true" />
+            <element signature="e#28498#28499#0" expanded="true" />
+            <element signature="e#28802#29000#0" expanded="true" />
+            <element signature="e#28999#29000#0" expanded="true" />
           </folding>
         </state>
       </provider>
