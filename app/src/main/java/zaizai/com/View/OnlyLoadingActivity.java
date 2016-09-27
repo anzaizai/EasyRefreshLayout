@@ -40,32 +40,32 @@ public class OnlyLoadingActivity extends AppCompatActivity {
 
     private void initListener() {
         easyRefreshLayout.setEnablePullToRefresh(false);
-        easyRefreshLayout.initLoadMore(new EasyRefreshLayout.LoadMoreEvent() {
-                                           @Override
-                                           public void onLoadMore() {
-                                               new Handler().postDelayed(new Runnable() {
-                                                   @Override
-                                                   public void run() {
-                                                       final List<String> list = new ArrayList<>();
-                                                       for (int i = 0; i < 5; i++) {
-                                                           list.add("EasyRefreshLayout new index :" + i);
-                                                       }
-                                                       easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
-                                                           @Override
-                                                           public void complete() {
-                                                               adapter.getData().addAll(list);
-                                                               adapter.notifyDataSetChanged();
-                                                             //  adapter.addData(list);
-                                                           }
-                                                       }, 1000);
+        
+        easyRefreshLayout.initLoadMore(
+                new EasyRefreshLayout.LoadMoreEvent() {
+                    @Override
+                    public void onLoadMore() {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                final List<String> list = new ArrayList<>();
+                                for (int i = 0; i < 5; i++) {
+                                    list.add("EasyRefreshLayout new index :" + i);
+                                }
+                                easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
+                                    @Override
+                                    public void complete() {
+                                        adapter.getData().addAll(list);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }, 1000);
 
-                                                   }
-                                               }, 2000);
+                            }
+                        }, 2000);
 
-                                           }
+                    }
 
-
-                                       }
+                }
 
         );
     }
