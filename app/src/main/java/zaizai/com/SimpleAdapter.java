@@ -14,6 +14,7 @@ public class SimpleAdapter extends BaseQuickAdapter<String> {
 
     @Override
     protected void convert(BaseViewHolder helper, String item) {
+        helper.setText(R.id.text,item);
 
     }
 }

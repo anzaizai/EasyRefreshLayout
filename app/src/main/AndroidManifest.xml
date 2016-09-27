@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="zaizai.com.View.OnlyRefreshActivity" />
+        <activity android:name="zaizai.com.View.OnlyLoadingActivity" />
+        <activity android:name="zaizai.com.View.RefreshLoadingActivity"></activity>
     </application>
 
 </manifest>
