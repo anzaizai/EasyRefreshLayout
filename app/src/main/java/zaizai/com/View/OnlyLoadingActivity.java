@@ -40,7 +40,7 @@ public class OnlyLoadingActivity extends AppCompatActivity {
 
     private void initListener() {
         easyRefreshLayout.setEnablePullToRefresh(false);
-        
+
         easyRefreshLayout.initLoadMore(
                 new EasyRefreshLayout.LoadMoreEvent() {
                     @Override

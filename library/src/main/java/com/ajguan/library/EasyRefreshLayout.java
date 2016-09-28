@@ -675,6 +675,7 @@ public class EasyRefreshLayout extends ViewGroup {
                 super.onScrolled(recyclerView, dx, dy);
 
             }
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -882,10 +883,10 @@ public class EasyRefreshLayout extends ViewGroup {
         int lastVisibleItemPosition = -1;
 
         int layoutManagerType = 0;
-        if (layoutManager instanceof LinearLayoutManager) {
-            layoutManagerType = 0;
-        } else if (layoutManager instanceof GridLayoutManager) {
+        if (layoutManager instanceof GridLayoutManager) {
             layoutManagerType = 1;
+        } else if (layoutManager instanceof LinearLayoutManager) {
+            layoutManagerType = 0;
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             layoutManagerType = 2;
         } else {

@@ -83,6 +83,7 @@ public class RefreshLoadingActivity extends AppCompatActivity {
                                     public void complete() {
                                         adapter.getData().addAll(list);
                                         adapter.notifyDataSetChanged();
+
                                     }
                                 },500);
 
