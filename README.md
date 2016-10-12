@@ -7,7 +7,7 @@ Inherited This library allows you to easily achieve the drop-down refresh and up
 
 # How to use
 
-## Step one
+## Step 1
 * You need to add jitpack repository infomaition to build.gradle in your project.
 
 ``` 
@@ -38,7 +38,7 @@ task clean(type: Delete) {
 }
 
 ```
-## step two
+## step 2
 * You need to add library dependencies infomation to build.gradle in your module. 
 
 ``` 
@@ -46,7 +46,7 @@ task clean(type: Delete) {
 ```
 * last releases version is 1.1.0 can be use
 
-## step three
+## step 3
 
 * Use EasyRefreshLayout as the top-level root layout the needs to be added pull-down refresh or pull-up loading more the funcation views.
 
@@ -131,7 +131,7 @@ easyRefreshLayout.setEnableLoadMore(false);
 ```
 easyRefreshLayout.setEnablePullToRefresh(false);
 ```
-## step four 
+## step 4 
 
 ### Customizable pull-down refresh head view 
 
