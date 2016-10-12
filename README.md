@@ -114,7 +114,9 @@ task clean(type: Delete) {
                 }, 1000);
 
             }
-        });```
+        });
+        
+```
 
 
 * if you need only pull-down refresh funcation
