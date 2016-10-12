@@ -44,7 +44,7 @@ task clean(type: Delete) {
 ``` 
  compile 'com.github.anzaizai:EasyRefreshLayout:1.0.8'
 ```
-* last releases version is 1.0.9 can be use
+* last releases version is 1.1.0 can be use
 
 ## step three
 
