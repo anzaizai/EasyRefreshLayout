@@ -45,15 +45,14 @@ public class EasyRefreshLayout extends ViewGroup {
     private boolean isRefreshing;
 
 
-    //最小滑动距离
     private int touchSlop;
     private View refreshHeaderView;
-    private int currentOffsetTop; // contentView 偏移顶部的距离
+    private int currentOffsetTop;
 
     private View contentView;
     private boolean hasMeasureHeaderView = false;
     private int headerViewHight;
-    private int totalDragDistance; //需要下拉的到该距离才出发刷新操作
+    private int totalDragDistance;
     private int activePointerId;
     private boolean isTouch;
     private boolean hasSendCancelEvent;
@@ -66,20 +65,18 @@ public class EasyRefreshLayout extends ViewGroup {
     private MotionEvent lastEvent;
     private AutoScroll autoScroll;
     private boolean isAutoRefresh;
-    private OnRefreshListener refreshListener;
+    private EasyEvent easyEvent;
 
 
     private RecyclerView mRecyclerView;
     boolean isCanLoad = false;
     private LayoutInflater mInflater;
-    private LoadMoreEvent mEvent;
     private boolean isLoading = false;
     private View mLoadMoreView;
     private boolean isLoadingFail = false;
     private boolean isEnableLoadMore = true;
 
 
-    // 刷新成功，显示500ms成功状态再滚动回顶部
     private Runnable delayToScrollTopRunnable = new Runnable() {
         @Override
         public void run() {
@@ -90,8 +87,6 @@ public class EasyRefreshLayout extends ViewGroup {
     private Runnable autoRefreshRunnable = new Runnable() {
         @Override
         public void run() {
-            // 标记当前是自动刷新状态，finishScroll调用时需要判断
-            // 在actionDown事件中重新标记为false
             isAutoRefresh = true;
             changeState(State.PULL);
             autoScroll.scrollTo(totalDragDistance, SCROLL_TO_REFRESH_DURATION);
@@ -99,7 +94,6 @@ public class EasyRefreshLayout extends ViewGroup {
     };
     private boolean hasMeasureLoadMoreView;
     private int loadMoreViewHeight;
-    private boolean hasMeasureContent;
     private boolean isRecycerView;
     private boolean isNotMoreLoading;
 
@@ -117,14 +111,11 @@ public class EasyRefreshLayout extends ViewGroup {
 
     private void initParameter(Context context, AttributeSet attrs) {
         touchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
-        /*初始化一个默认头部*/
+        /*init an refreshHeadView*/
         View refreshHeadView = getDefaultRefreshView();
         setRefreshHeadView(refreshHeadView);
-
         View loadMoreView = getDefaultLoadMoreView();
-
         setLoadMoreView(loadMoreView);
-        /**/
         autoScroll = new AutoScroll();
     }
 
@@ -203,6 +194,8 @@ public class EasyRefreshLayout extends ViewGroup {
                 }
             }
         }
+        if (isRecycerView)
+            initERVH();
     }
 
     @Override
@@ -419,9 +412,9 @@ public class EasyRefreshLayout extends ViewGroup {
             autoScroll.stop();
 
             changeState(State.REFRESHING);
-            if (refreshListener != null) {
+            if (easyEvent != null) {
                 isRefreshing = true;
-                refreshListener.onRefreshing();
+                easyEvent.onRefreshing();
             }
             // 因为判断条件targetY <= totalDragDistance，会导致不能回到正确的刷新高度（有那么一丁点偏差），调整change
             int adjustOffset = totalDragDistance - nextOffsetTop;
@@ -607,8 +600,8 @@ public class EasyRefreshLayout extends ViewGroup {
         if (isAutoRefresh && !isForceFinish) {
             isAutoRefresh = false;
             changeState(State.REFRESHING);
-            if (refreshListener != null) {
-                refreshListener.onRefreshing();
+            if (easyEvent != null) {
+                easyEvent.onRefreshing();
             }
             finishSpinner();
         }
@@ -619,9 +612,16 @@ public class EasyRefreshLayout extends ViewGroup {
         void onRefreshing();
     }
 
+    public interface EasyEvent extends OnRefreshListener, LoadMoreEvent {
+
+    }
+
     // 提供外部设置方法
-    public void setRefreshListener(OnRefreshListener refreshListener) {
-        this.refreshListener = refreshListener;
+    public void addEasyEvent(EasyEvent event) {
+        if (event == null) {
+            throw new ERVHRuntimeException("adapter can not be null");
+        }
+        this.easyEvent = event;
     }
 
     public boolean isEnablePullToRefresh() {
@@ -647,18 +647,6 @@ public class EasyRefreshLayout extends ViewGroup {
         changeState(State.RESET);
     }
 
-
-    public void initLoadMore(EasyRefreshLayout.LoadMoreEvent event) {
-
-        if (event == null) {
-            throw new ERVHRuntimeException("adapter can not be null");
-        }
-        mEvent = event;
-        if (contentView == null)
-            initContentView();
-        if (isRecycerView)
-            initERVH();
-    }
 
     private void initERVH() {
         if (mLoadMoreView == null) {
@@ -691,11 +679,10 @@ public class EasyRefreshLayout extends ViewGroup {
                         ((ILoadMoreView) mLoadMoreView).reset();
                         Log.i(TAG, ">>>>loading");
                         mLoadMoreView.measure(0, 0);
-                        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                         ((ILoadMoreView) mLoadMoreView).loading();
                         showLoadView();
-                        if (mEvent != null) {
-                            mEvent.onLoadMore();
+                        if (easyEvent != null) {
+                            easyEvent.onLoadMore();
                         }
                     }
                 }
@@ -815,10 +802,10 @@ public class EasyRefreshLayout extends ViewGroup {
         ((ILoadMoreView) mLoadMoreView).getCanClickFailView().setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isLoadingFail && mEvent != null) {
+                if (isLoadingFail && easyEvent != null) {
                     isLoading = true;
                     ((ILoadMoreView) mLoadMoreView).loading();
-                    mEvent.onLoadMore();
+                    easyEvent.onLoadMore();
                 }
             }
         });
@@ -945,35 +932,35 @@ public class EasyRefreshLayout extends ViewGroup {
 
     }
 
-    public static long getShowLoadViewAnimatorDuration() {
+    public long getShowLoadViewAnimatorDuration() {
         return SCROLL_TO_LOADING_DURATION;
     }
 
-    public static void setShowLoadViewAnimatorDuration(long scrollToLoadingDuration) {
+    public void setShowLoadViewAnimatorDuration(long scrollToLoadingDuration) {
         SCROLL_TO_LOADING_DURATION = scrollToLoadingDuration;
     }
 
-    public static int getScrollToRefreshDuration() {
+    public int getScrollToRefreshDuration() {
         return SCROLL_TO_REFRESH_DURATION;
     }
 
-    public static void setScrollToRefreshDuration(int scrollToRefreshDuration) {
+    public void setScrollToRefreshDuration(int scrollToRefreshDuration) {
         SCROLL_TO_REFRESH_DURATION = scrollToRefreshDuration;
     }
 
-    public static int getScrollToTopDuration() {
+    public int getScrollToTopDuration() {
         return SCROLL_TO_TOP_DURATION;
     }
 
-    public static void setScrollToTopDuration(int scrollToTopDuration) {
+    public void setScrollToTopDuration(int scrollToTopDuration) {
         SCROLL_TO_TOP_DURATION = scrollToTopDuration;
     }
 
-    public static long getHideLoadViewAnimatorDuration() {
+    public long getHideLoadViewAnimatorDuration() {
         return SHOW_COMPLETED_TIME;
     }
 
-    public static void setHideLoadViewAnimatorDuration(long showCompletedTime) {
+    public void setHideLoadViewAnimatorDuration(long showCompletedTime) {
         SHOW_COMPLETED_TIME = showCompletedTime;
     }
 }

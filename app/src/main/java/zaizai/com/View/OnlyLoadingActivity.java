@@ -10,6 +10,7 @@ import com.ajguan.R;
 import com.ajguan.library.EasyRefreshLayout;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import zaizai.com.SimpleAdapter;
@@ -41,33 +42,33 @@ public class OnlyLoadingActivity extends AppCompatActivity {
     private void initListener() {
         easyRefreshLayout.setEnablePullToRefresh(false);
 
-        easyRefreshLayout.initLoadMore(
-                new EasyRefreshLayout.LoadMoreEvent() {
+        easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void onLoadMore() {
-                        new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        final List<String> list = new ArrayList<>();
+                        for (int i = 0; i < 5; i++) {
+                            list.add("this is  new load data >>>>"+new Date().toLocaleString());
+                        }
+                        easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
                             @Override
-                            public void run() {
-                                final List<String> list = new ArrayList<>();
-                                for (int i = 0; i < 5; i++) {
-                                    list.add("EasyRefreshLayout new index :" + i);
-                                }
-                                easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
-                                    @Override
-                                    public void complete() {
-                                        adapter.getData().addAll(list);
-                                        adapter.notifyDataSetChanged();
-                                    }
-                                }, 1000);
-
+                            public void complete() {
+                                adapter.getData().addAll(list);
+                                adapter.notifyDataSetChanged();
                             }
-                        }, 2000);
+                        }, 1000);
 
                     }
+                }, 2000);
 
-                }
+            }
+            @Override
+            public void onRefreshing() {
 
-        );
+            }
+        });
     }
 
     private void initView() {

@@ -66,50 +66,56 @@ task clean(type: Delete) {
     </com.ajguan.library.EasyRefreshLayout>
     
 ```
-* add pull-down refresh funcation
+* add EasyEvenr listener
 
 ```
- easyRefreshLayout.setRefreshListener(new EasyRefreshLayout.OnRefreshListener() {
+  easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+            @Override
+            public void onLoadMore() {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        final List<String> list = new ArrayList<>();
+                        for (int j = 0; j < 5; j++) {
+                            list.add("this is  new load data >>>>" + new Date().toLocaleString());
+                        }
+
+                        //adapter.addData(list);
+
+                        easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
+                            @Override
+                            public void complete() {
+                                adapter.getData().addAll(list);
+                                adapter.notifyDataSetChanged();
+
+                            }
+                        }, 500);
+
+                    }
+                }, 2000);
+                
+
+            }
+
             @Override
             public void onRefreshing() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        List<String> list = new ArrayList<>();
+                        for (int i = 0; i < 20; i++) {
+                            list.add("this is refresh data >>>" + new Date().toLocaleString());
+                        }
+                        adapter.setNewData(list);
                         easyRefreshLayout.refreshComplete();
-                        Toast.makeText(getApplicationContext(), "refresh success", Toast.LENGTH_SHORT).show();                    }
-                },3000);
+                        Toast.makeText(getApplicationContext(), "refresh success", Toast.LENGTH_SHORT).show();
+                    }
+                }, 1000);
 
             }
-        });
-```
+        });```
 
-* add pull-up loading funcation 
-
-```
-easyRefreshLayout.initLoadMore(
-                new EasyRefreshLayout.LoadMoreEvent() {
-                    @Override
-                    public void onLoadMore() {
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                final List<String> list = new ArrayList<>();
-                                for (int i = 0; i < 5; i++) {
-                                    list.add("EasyRefreshLayout new index :" + i);
-                                }
-                                easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
-                                    @Override
-                                    public void complete() {
-                                        adapter.getData().addAll(list);
-                                        adapter.notifyDataSetChanged();
-                                    }
-                                }, 1000);
-                            }
-                        }, 2000);
-                    }   
-                }
-        );
-```
 
 * if you need only pull-down refresh funcation
 
