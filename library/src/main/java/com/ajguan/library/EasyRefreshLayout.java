@@ -681,9 +681,15 @@ public class EasyRefreshLayout extends ViewGroup {
                         mLoadMoreView.measure(0, 0);
                         ((ILoadMoreView) mLoadMoreView).loading();
                         showLoadView();
-                        if (easyEvent != null) {
-                            easyEvent.onLoadMore();
-                        }
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (easyEvent != null) {
+                                    easyEvent.onLoadMore();
+                                }
+                            }
+                        }, SCROLL_TO_LOADING_DURATION);
+
                     }
                 }
             }
