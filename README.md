@@ -42,9 +42,9 @@ task clean(type: Delete) {
 * You need to add library dependencies infomation to build.gradle in your module. 
 
 ``` 
- compile 'com.github.anzaizai:EasyRefreshLayout:1.0.8'
+ compile 'com.github.anzaizai:EasyRefreshLayout:1.1.2'
 ```
-* last releases version is 1.1.0 can be use
+* last releases version is 1.1.2 can be use
 
 ## step 3
 
