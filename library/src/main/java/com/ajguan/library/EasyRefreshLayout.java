@@ -77,6 +77,8 @@ public class EasyRefreshLayout extends ViewGroup {
     private boolean isEnableLoadMore = true;
 
 
+
+
     private Runnable delayToScrollTopRunnable = new Runnable() {
         @Override
         public void run() {
@@ -248,9 +250,11 @@ public class EasyRefreshLayout extends ViewGroup {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
+
         if (!isEnablePullToRefresh || isLoading || contentView == null) {
             return super.dispatchTouchEvent(ev);
         }
+
         //获取支持多点触控的action
         final int actionMasked = ev.getActionMasked();
         switch (actionMasked) {
@@ -273,7 +277,7 @@ public class EasyRefreshLayout extends ViewGroup {
                 removeCallbacks(delayToScrollTopRunnable);
                 removeCallbacks(autoRefreshRunnable);
                 super.dispatchTouchEvent(ev);
-                //表示消耗了该事件,便面子view都没有消耗而导致后面接收不到该事件的事件序列
+                //表示消耗了该事件,以便子view都没有消耗而导致后面接收不到该事件的事件序列
                 return true;
             }
 
@@ -293,6 +297,10 @@ public class EasyRefreshLayout extends ViewGroup {
                 float offsetY = yDiff * DRAG_RATE;
                 lastMotionX = x;
                 lastMotionY = y;
+                if (Math.abs(xDiff) > touchSlop /*&& isInterceptMoveEvent*/) {
+                    /*左右滑动了*/
+                    break;
+                }
 
                 if (!isBeginDragged && Math.abs(y - initDownY) > touchSlop) {
                     isBeginDragged = true;
@@ -969,4 +977,5 @@ public class EasyRefreshLayout extends ViewGroup {
     public void setHideLoadViewAnimatorDuration(long showCompletedTime) {
         SHOW_COMPLETED_TIME = showCompletedTime;
     }
+
 }
