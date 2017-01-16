@@ -10,11 +10,14 @@ import android.widget.Toast;
 
 import com.ajguan.R;
 import com.ajguan.library.EasyRefreshLayout;
+import com.chad.library.adapter.base.animation.BaseAnimation;
+import com.chad.library.adapter.base.animation.SlideInBottomAnimation;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import zaizai.com.MyAnimation;
 import zaizai.com.SimpleAdapter;
 
 public class RefreshLoadingActivity extends AppCompatActivity {
@@ -34,11 +37,17 @@ public class RefreshLoadingActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        List<String> list = new ArrayList<>();
+         List<String> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             list.add("EasyRefreshLayout index :" + i);
-        }
-        adapter.setNewData(list);
+
+                    adapter.getData().addAll(list);
+                    adapter.notifyDataSetChanged();
+                }
+
+
+
+
     }
 
     private void initListener() {
@@ -46,28 +55,20 @@ public class RefreshLoadingActivity extends AppCompatActivity {
             @Override
             public void onLoadMore() {
 
+                final List<String> list = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    list.add("this is  new load data >>>>" + new Date().toLocaleString());
+                }
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        final List<String> list = new ArrayList<>();
-                        for (int j = 0; j < 5; j++) {
-                            list.add("this is  new load data >>>>" + new Date().toLocaleString());
-                        }
-
-                        //adapter.addData(list);
-
-                        easyRefreshLayout.loadMoreComplete(new EasyRefreshLayout.Event() {
-                            @Override
-                            public void complete() {
-                                adapter.getData().addAll(list);
-                                adapter.notifyDataSetChanged();
-
-                            }
-                        }, 500);
-
+                        easyRefreshLayout.closeLoadView();
+                        int postion = adapter.getData().size();
+                        adapter.getData().addAll(list);
+                        adapter.notifyDataSetChanged();
+                        recyclerView.scrollToPosition(postion);
                     }
-                }, 2000);
-
+                },500);
 
             }
 

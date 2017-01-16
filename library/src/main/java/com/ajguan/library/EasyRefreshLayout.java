@@ -1,6 +1,7 @@
 package com.ajguan.library;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Handler;
@@ -76,7 +77,16 @@ public class EasyRefreshLayout extends ViewGroup {
     private boolean isLoadingFail = false;
     private boolean isEnableLoadMore = true;
 
+    public EasyRefreshLayout(Context context) {
+        this(context, null);
 
+    }
+
+    public EasyRefreshLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initParameter(context, attrs);
+
+    }
 
 
     private Runnable delayToScrollTopRunnable = new Runnable() {
@@ -98,17 +108,6 @@ public class EasyRefreshLayout extends ViewGroup {
     private int loadMoreViewHeight;
     private boolean isRecycerView;
     private boolean isNotMoreLoading;
-
-    public EasyRefreshLayout(Context context) {
-        this(context, null);
-
-    }
-
-    public EasyRefreshLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initParameter(context, attrs);
-
-    }
 
 
     private void initParameter(Context context, AttributeSet attrs) {
@@ -267,6 +266,7 @@ public class EasyRefreshLayout extends ViewGroup {
                 // 是否开始下拉
                 isBeginDragged = false;
                 // 上一次contentView的偏移高度
+
                 lastOffsetTop = currentOffsetTop;
                 currentOffsetTop = contentView.getTop();
 
@@ -666,6 +666,7 @@ public class EasyRefreshLayout extends ViewGroup {
         }
         mRecyclerView = (RecyclerView) contentView;
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -683,20 +684,13 @@ public class EasyRefreshLayout extends ViewGroup {
                         isCanLoad = true;
                     }
                     if (isCanLoad) {
+                        isCanLoad = false;
                         isLoading = true;
                         ((ILoadMoreView) mLoadMoreView).reset();
                         Log.i(TAG, ">>>>loading");
                         mLoadMoreView.measure(0, 0);
                         ((ILoadMoreView) mLoadMoreView).loading();
                         showLoadView();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (easyEvent != null) {
-                                    easyEvent.onLoadMore();
-                                }
-                            }
-                        }, SCROLL_TO_LOADING_DURATION);
 
                     }
                 }
@@ -717,16 +711,28 @@ public class EasyRefreshLayout extends ViewGroup {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 final int ds = (int) animation.getAnimatedValue();
-                setTargetOffsetTopAndBottom((ds - lastDs));
+                // setTargetOffsetTopAndBottom((ds - lastDs));
                 lastDs = ds;
+                mLoadMoreView.bringToFront();
                 mLoadMoreView.setTranslationY(ds);
             }
         });
-        animator.setDuration(SCROLL_TO_LOADING_DURATION);
-        animator.start();
-
-
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                if (easyEvent != null) {
+                    easyEvent.onLoadMore();
+                }
+        }
     }
+
+    );
+    animator.setDuration(SCROLL_TO_LOADING_DURATION);
+    animator.start();
+
+
+}
 
     private void hideLoadView() {
         // setTargetOffsetTopAndBottom( mLoadMoreView.getMeasuredHeight());
@@ -741,8 +747,9 @@ public class EasyRefreshLayout extends ViewGroup {
                 public void onAnimationUpdate(ValueAnimator animation) {
 
                     int ds = (int) animation.getAnimatedValue();
-                    setTargetOffsetTopAndBottom((ds - lastDs));
+                    //  setTargetOffsetTopAndBottom((ds - lastDs));
                     lastDs = ds;
+                    mLoadMoreView.bringToFront();
                     mLoadMoreView.setTranslationY(ds);
 
 
@@ -782,7 +789,8 @@ public class EasyRefreshLayout extends ViewGroup {
     public void closeLoadView() {
         // setTargetOffsetTopAndBottom( mLoadMoreView.getMeasuredHeight());
         if (mLoadMoreView != null && isRecycerView) {
-            setTargetOffsetTopAndBottom(mLoadMoreView.getMeasuredHeight());
+            // setTargetOffsetTopAndBottom(mLoadMoreView.getMeasuredHeight());
+            mLoadMoreView.bringToFront();
             mLoadMoreView.setTranslationY(mLoadMoreView.getMeasuredHeight());
             resetLoadMoreState();
 
@@ -837,6 +845,7 @@ public class EasyRefreshLayout extends ViewGroup {
 
     public void loadMoreComplete(final EasyRefreshLayout.Event event, long delayedTime) {
         ((ILoadMoreView) mLoadMoreView).loadComplete();
+
         if (event == null) {
             hideLoadView();
             resetLoadMoreState();
@@ -934,17 +943,17 @@ public class EasyRefreshLayout extends ViewGroup {
         return isLoading;
     }
 
-    public interface LoadMoreEvent {
-        /***
-         * 加载更多
-         */
-        void onLoadMore();
-    }
+public interface LoadMoreEvent {
+    /***
+     * 加载更多
+     */
+    void onLoadMore();
+}
 
-    public interface Event {
-        void complete();
+public interface Event {
+    void complete();
 
-    }
+}
 
     public long getShowLoadViewAnimatorDuration() {
         return SCROLL_TO_LOADING_DURATION;

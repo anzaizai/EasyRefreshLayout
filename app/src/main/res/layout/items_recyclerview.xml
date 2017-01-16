@@ -3,8 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:layout_marginTop="1dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/select"
     android:gravity="center"
-    android:background="#1e777777"
     android:orientation="vertical">
 
     <TextView
@@ -12,5 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="hello" />
+
+
 
 </LinearLayout>

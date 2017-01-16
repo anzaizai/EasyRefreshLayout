@@ -98,6 +98,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.bigkoo/convenientbanner/2.0.5/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.CymChad/BaseRecyclerViewAdapterHelper/2.1.6/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.ybq/Android-SpinKit/1.0.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
@@ -131,6 +132,7 @@
     <orderEntry type="library" exported="" name="appcompat-v7-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-core-utils-24.2.1" level="project" />
+    <orderEntry type="library" exported="" name="convenientbanner-2.0.5" level="project" />
     <orderEntry type="library" exported="" name="Android-SpinKit-1.0.2" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="BaseRecyclerViewAdapterHelper-2.1.6" level="project" />
