@@ -39,7 +39,7 @@ public class EasyRefreshLayout extends ViewGroup {
     private static long SHOW_COMPLETED_TIME = 500;
     private static long SCROLL_TO_LOADING_DURATION = 500;
     private static long SHOW_SCROLL_DOWN_DURATION = 300;
-    private static double PUll_RESISTANCE = 2;
+    private  double pull_resistance = 2.0f;
 
     private State state = State.RESET;
 
@@ -395,7 +395,7 @@ public class EasyRefreshLayout extends ViewGroup {
         float extraOS = nextOffsetTop - totalDragDistance;
         float slingshotDist = totalDragDistance;
         float tensionSlingshotPercent = Math.max(0, Math.min(extraOS, slingshotDist * 2) / slingshotDist);
-        float tensionPercent = (float) (tensionSlingshotPercent - Math.pow(tensionSlingshotPercent / PUll_RESISTANCE, 2));
+        float tensionPercent = (float) (tensionSlingshotPercent - Math.pow(tensionSlingshotPercent / this.pull_resistance, 2));
 
         if (offset > 0) { // 下拉的时候才添加阻力
             offset = (int) (offset * (1f - tensionPercent));
@@ -995,16 +995,16 @@ public interface Event {
         SHOW_COMPLETED_TIME = showCompletedTime;
     }
 
-    
-    public static double getPUll_RESISTANCE() {
-        return PUll_RESISTANCE;
+
+    public  double getPullResistance() {
+        return this.pull_resistance;
     }
 
     /**
      * Set the pull-down refresh resistance factor
-     * @param PUll_RESISTANCE resistance factor
+     * @param PullResistance resistance factor
      */
-    public static void setPUll_RESISTANCE(double PUll_RESISTANCE) {
-        EasyRefreshLayout.PUll_RESISTANCE = PUll_RESISTANCE;
+    public  void setPullResistance(double PullResistance) {
+        this.pull_resistance = PullResistance;
     }
 }
