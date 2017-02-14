@@ -7,7 +7,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,6 +39,8 @@ public class EasyRefreshLayout extends ViewGroup {
     private static long SHOW_COMPLETED_TIME = 500;
     private static long SCROLL_TO_LOADING_DURATION = 500;
     private static long SHOW_SCROLL_DOWN_DURATION = 300;
+    private static double PUll_RESISTANCE = 2;
+
     private State state = State.RESET;
 
     private boolean isEnablePullToRefresh = true;
@@ -139,7 +140,13 @@ public class EasyRefreshLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //获取父控件高度
+//        int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+//        System.out.println(">>>>>parentHeight = "+parentHeight);
+//        int expandParentHeight = View.MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, View.MeasureSpec.AT_MOST);
+//        super.onMeasure(widthMeasureSpec, expandParentHeight);
+
+        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
         if (contentView == null) {
             initContentView();
         }
@@ -388,7 +395,7 @@ public class EasyRefreshLayout extends ViewGroup {
         float extraOS = nextOffsetTop - totalDragDistance;
         float slingshotDist = totalDragDistance;
         float tensionSlingshotPercent = Math.max(0, Math.min(extraOS, slingshotDist * 2) / slingshotDist);
-        float tensionPercent = (float) (tensionSlingshotPercent - Math.pow(tensionSlingshotPercent / 2, 2));
+        float tensionPercent = (float) (tensionSlingshotPercent - Math.pow(tensionSlingshotPercent / PUll_RESISTANCE, 2));
 
         if (offset > 0) { // 下拉的时候才添加阻力
             offset = (int) (offset * (1f - tensionPercent));
@@ -666,6 +673,7 @@ public class EasyRefreshLayout extends ViewGroup {
         }
         mRecyclerView = (RecyclerView) contentView;
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -987,4 +995,16 @@ public interface Event {
         SHOW_COMPLETED_TIME = showCompletedTime;
     }
 
+    
+    public static double getPUll_RESISTANCE() {
+        return PUll_RESISTANCE;
+    }
+
+    /**
+     * Set the pull-down refresh resistance factor
+     * @param PUll_RESISTANCE resistance factor
+     */
+    public static void setPUll_RESISTANCE(double PUll_RESISTANCE) {
+        EasyRefreshLayout.PUll_RESISTANCE = PUll_RESISTANCE;
+    }
 }
