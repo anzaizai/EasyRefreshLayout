@@ -18,6 +18,8 @@
         <activity android:name="zaizai.com.View.OnlyRefreshActivity" />
         <activity android:name="zaizai.com.View.OnlyLoadingActivity" />
         <activity android:name="zaizai.com.View.RefreshLoadingActivity"></activity>
+        <activity android:name="zaizai.com.View.ViewPagerActivity"></activity>
+
     </application>
 
 </manifest>

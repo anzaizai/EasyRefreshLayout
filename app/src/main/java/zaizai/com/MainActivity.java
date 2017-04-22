@@ -10,6 +10,7 @@ import com.ajguan.R;
 import zaizai.com.View.OnlyLoadingActivity;
 import zaizai.com.View.OnlyRefreshActivity;
 import zaizai.com.View.RefreshLoadingActivity;
+import zaizai.com.View.ViewPagerActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.loading).setOnClickListener(this);
         findViewById(R.id.refresh).setOnClickListener(this);
         findViewById(R.id.refresh_loding).setOnClickListener(this);
+        findViewById(R.id.m_view_pager).setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.refresh_loding:
                 startActivity(new Intent(MainActivity.this, RefreshLoadingActivity.class));
+                break;
+            case R.id.m_view_pager:
+                startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
                 break;
         }
 

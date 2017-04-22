@@ -48,4 +48,18 @@
 
 
     </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        style="@style/ERL_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/m_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="view_pager" />
+
+
+    </android.support.v7.widget.CardView>
 </LinearLayout>
