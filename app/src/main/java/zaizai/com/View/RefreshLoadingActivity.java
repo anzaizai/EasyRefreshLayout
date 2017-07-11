@@ -37,16 +37,12 @@ public class RefreshLoadingActivity extends AppCompatActivity {
     }
 
     private void initData() {
-         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
             list.add("EasyRefreshLayout index :" + i);
-
-                    adapter.getData().addAll(list);
-                    adapter.notifyDataSetChanged();
-                }
-
-
-
+        }
+        adapter.getData().addAll(list);
+        adapter.notifyDataSetChanged();
 
     }
 
@@ -68,7 +64,7 @@ public class RefreshLoadingActivity extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                         recyclerView.scrollToPosition(postion);
                     }
-                },500);
+                }, 500);
 
             }
 

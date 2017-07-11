@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 /**
  * Created by guanaj on 16/9/3.
  */
-public class SimpleAdapter extends BaseQuickAdapter<String> {
+public class SimpleAdapter extends BaseQuickAdapter<String,BaseViewHolder> {
     public SimpleAdapter() {
         super(R.layout.items_recyclerview, null);
     }

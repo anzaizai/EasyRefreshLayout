@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ScrollView;
 
 import com.ajguan.R;
 import com.ajguan.library.EasyRefreshLayout;
@@ -41,7 +44,9 @@ public class OnlyLoadingActivity extends AppCompatActivity {
     }
 
     private void initListener() {
+
         easyRefreshLayout.setEnablePullToRefresh(false);
+        easyRefreshLayout.setEnableLoadMore(true);
 
         easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
             @Override
@@ -74,11 +79,13 @@ public class OnlyLoadingActivity extends AppCompatActivity {
         easyRefreshLayout = (EasyRefreshLayout) findViewById(R.id.easylayout);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         layoutManager = new LinearLayoutManager(this);
+        layoutManager.setAutoMeasureEnabled(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         adapter = new SimpleAdapter();
        // adapter.setDuration(1000);
        // adapter.openLoadAnimation(new MyAnimation());
         recyclerView.setAdapter(adapter);
+        //scrollView = (ScrollView) findViewById(R.id.scrollview);
     }
 }

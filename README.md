@@ -39,12 +39,16 @@ task clean(type: Delete) {
 
 ```
 ## step 2
+
+
 * You need to add library dependencies infomation to build.gradle in your module. 
+<p><a href="https://jitpack.io/#anzaizai/EasyRefreshLayout"><img src="https://camo.githubusercontent.com/56402a2d4380676be337286b0a73b666e91076cc/68747470733a2f2f6a69747061636b2e696f2f762f616e7a61697a61692f4561737953776970654d656e754c61796f75742e737667" alt="" data-canonical-src="https://jitpack.io/v/anzaizai/EasyRefreshLayout.svg" style="max-width:100%;"></a></p>
+
 
 ``` 
- compile 'com.github.anzaizai:EasyRefreshLayout:1.1.6'
+ compile 'com.github.anzaizai:EasyRefreshLayout:1.2.0'
 ```
-* last releases version is 1.1.6 can be use
+* last releases version is 1.2.0 can be use
 
 ## step 3
 

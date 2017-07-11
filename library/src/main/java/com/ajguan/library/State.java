@@ -4,5 +4,20 @@ package com.ajguan.library;
  * Created by guanaj on 16/9/2.
  */
 public enum State {
-    RESET,PULL,REFRESHING,COMPLETE
+    /**
+     * 重置
+     */
+    RESET,
+    /**
+     * 下拉状态
+     */
+    PULL,
+    /**
+     * 刷新中
+     */
+    REFRESHING,
+    /**
+     * 完成状态
+     */
+    COMPLETE
 }

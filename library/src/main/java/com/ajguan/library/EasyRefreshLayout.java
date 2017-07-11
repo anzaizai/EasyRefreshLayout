@@ -93,14 +93,18 @@ public class EasyRefreshLayout extends ViewGroup {
 
     }
 
-
+    /**
+     * 延迟几秒后恢复原状
+     */
     private Runnable delayToScrollTopRunnable = new Runnable() {
         @Override
         public void run() {
             autoScroll.scrollTo(START_POSITION, SCROLL_TO_TOP_DURATION);
         }
     };
-
+    /**
+     * 自动变换到刷新状态
+     */
     private Runnable autoRefreshRunnable = new Runnable() {
         @Override
         public void run() {
@@ -109,7 +113,11 @@ public class EasyRefreshLayout extends ViewGroup {
             autoScroll.scrollTo(totalDragDistance, SCROLL_TO_REFRESH_DURATION);
         }
     };
+    /**
+     * 是否已测量加载更多的view
+     */
     private boolean hasMeasureLoadMoreView;
+
     private int loadMoreViewHeight;
     private boolean isRecycerView;
     private boolean isNotMoreLoading;
@@ -169,6 +177,7 @@ public class EasyRefreshLayout extends ViewGroup {
 
 
         /*测量headerView*/
+
         measureChild(refreshHeaderView, widthMeasureSpec, heightMeasureSpec);
         if (!hasMeasureHeaderView) {
             /*headerView还没有被测量*/
@@ -277,10 +286,8 @@ public class EasyRefreshLayout extends ViewGroup {
                 // 是否开始下拉
                 isBeginDragged = false;
                 // 上一次contentView的偏移高度
-
                 lastOffsetTop = currentOffsetTop;
                 currentOffsetTop = contentView.getTop();
-
                 // 手指按下时的坐标
                 initDownX = lastMotionX = ev.getX(0);
                 initDownY = lastMotionY = ev.getY(0);
@@ -482,7 +489,6 @@ public class EasyRefreshLayout extends ViewGroup {
         }
 
         contentView.offsetTopAndBottom(offset);
-
         refreshHeaderView.offsetTopAndBottom(offset);
         lastOffsetTop = currentOffsetTop;
         currentOffsetTop = contentView.getTop();
@@ -497,7 +503,7 @@ public class EasyRefreshLayout extends ViewGroup {
         if (lastEvent == null) {
             return;
         }
-        Log.i(TAG, "start sendCancelEvent");
+       // Log.i(TAG, "start sendCancelEvent");
         MotionEvent ev = MotionEvent.obtain(lastEvent);
         ev.setAction(MotionEvent.ACTION_CANCEL);
         super.dispatchTouchEvent(ev);
@@ -688,13 +694,7 @@ public class EasyRefreshLayout extends ViewGroup {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                Log.i(TAG,"yDiff:"+yDiff);
-                if (yDiff > 0 || Math.abs(yDiff) < touchSlop) {
-                    return;
-                }
-
-
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && !isLoading && isEnableLoadMore && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
+                if (yDiff <= 0 && !isLoading && isEnableLoadMore && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
                     final int lastVisibleItem = getLastVisiBleItem();
                     int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
                     int totalChildCount = mRecyclerView.getLayoutManager().getChildCount();
@@ -705,7 +705,7 @@ public class EasyRefreshLayout extends ViewGroup {
                         isCanLoad = false;
                         isLoading = true;
                         ((ILoadMoreView) mLoadMoreView).reset();
-                        Log.i(TAG, ">>>>loading");
+
                         mLoadMoreView.measure(0, 0);
                         ((ILoadMoreView) mLoadMoreView).loading();
                         showLoadView();
