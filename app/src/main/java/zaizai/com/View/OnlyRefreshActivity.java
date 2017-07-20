@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.ajguan.library.EasyRefreshLayout;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +32,7 @@ import zaizai.com.SimpleAdapter;
 
 public class OnlyRefreshActivity extends AppCompatActivity {
 
+    private static final String TAG = "OnlyRefreshActivity";
     private EasyRefreshLayout easyRefreshLayout;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -52,7 +55,7 @@ public class OnlyRefreshActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             list.add("EasyRefreshLayout index :" + i);
         }
-       // adapter.addHeaderView(banner);
+        // adapter.addHeaderView(banner);
         adapter.setNewData(list);
         for (int i = 0; i < 6; i++) {
             localImages.add(R.drawable.arrow);
@@ -123,7 +126,24 @@ public class OnlyRefreshActivity extends AppCompatActivity {
             }
         });
         easyRefreshLayout.setEnableLoadMore(false);
-    }
+//        adapter.setEnableLoadMore(true);
+//        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+//            @Override
+//            public void onLoadMoreRequested() {
+//                Log.i(TAG, ">>>>");
+//                List<String> list = new ArrayList<>();
+//                for (int i = 0; i < 5; i++) {
+//                    list.add("this is  new load data >>>>" + new Date().toLocaleString());
+//                }
+//
+//                adapter.getData().addAll(list);
+//                adapter.notifyDataSetChanged();
+//                adapter.loadMoreComplete();
+//
+//
+//        }
+//    },recyclerView);
+}
 
     private void initView() {
         easyRefreshLayout = (EasyRefreshLayout) findViewById(R.id.easylayout);

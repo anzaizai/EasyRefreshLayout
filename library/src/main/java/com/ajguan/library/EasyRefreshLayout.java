@@ -81,6 +81,7 @@ public class EasyRefreshLayout extends ViewGroup {
     private boolean isEnableLoadMore = true;
     private float offsetY;
     private float yDiff;
+    private float mDistance;
 
     public EasyRefreshLayout(Context context) {
         this(context, null);
@@ -270,7 +271,7 @@ public class EasyRefreshLayout extends ViewGroup {
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
 
-        if (!isEnablePullToRefresh || isLoading || contentView == null) {
+        if ( isLoading || contentView == null) {
             return super.dispatchTouchEvent(ev);
         }
 
@@ -278,6 +279,7 @@ public class EasyRefreshLayout extends ViewGroup {
         final int actionMasked = ev.getActionMasked();
         switch (actionMasked) {
             case MotionEvent.ACTION_DOWN: {
+                mDistance = 0;
                 //Log.i(TAG, "ACTION_DOWN");
                 //获得首次按下的触摸事件的id
                 activePointerId = ev.getPointerId(0);
@@ -312,6 +314,7 @@ public class EasyRefreshLayout extends ViewGroup {
                 float y = ev.getY(MotionEventCompat.findPointerIndex(ev, activePointerId));
                 float xDiff = x - lastMotionX;
                 yDiff = y - lastMotionY;
+                mDistance = mDistance + yDiff;
                 offsetY = yDiff * DRAG_RATE;
                 lastMotionX = x;
                 lastMotionY = y;
@@ -389,6 +392,9 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     private void moveSpinner(float offsetY) {
+        if (!isEnablePullToRefresh){
+            return;
+        }
         int offset = Math.round(offsetY);
         if (offset == 0) {
             return;
@@ -503,7 +509,7 @@ public class EasyRefreshLayout extends ViewGroup {
         if (lastEvent == null) {
             return;
         }
-       // Log.i(TAG, "start sendCancelEvent");
+        // Log.i(TAG, "start sendCancelEvent");
         MotionEvent ev = MotionEvent.obtain(lastEvent);
         ev.setAction(MotionEvent.ACTION_CANCEL);
         super.dispatchTouchEvent(ev);
@@ -689,27 +695,32 @@ public class EasyRefreshLayout extends ViewGroup {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
+
             }
 
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (yDiff <= 0 && !isLoading && isEnableLoadMore && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
-                    final int lastVisibleItem = getLastVisiBleItem();
-                    int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
-                    int totalChildCount = mRecyclerView.getLayoutManager().getChildCount();
-                    if (totalChildCount > 0 && lastVisibleItem >= totalItemCount - 1 && totalItemCount >= totalChildCount) {
-                        isCanLoad = true;
-                    }
-                    if (isCanLoad) {
-                        isCanLoad = false;
-                        isLoading = true;
-                        ((ILoadMoreView) mLoadMoreView).reset();
+               // Log.i(TAG, ">>>>mDistance:" + mDistance);
+               // Log.i(TAG, ">>>>touchSlop:" + touchSlop);
+                if (Math.abs(mDistance) > touchSlop && mDistance < 0) {
+                    if (!isLoading && isEnableLoadMore && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
+                        final int lastVisibleItem = getLastVisiBleItem();
+                        int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
+                        int totalChildCount = mRecyclerView.getLayoutManager().getChildCount();
+                        if (totalChildCount > 0 && lastVisibleItem >= totalItemCount - 1 && totalItemCount >= totalChildCount) {
+                            isCanLoad = true;
+                        }
+                        if (isCanLoad) {
+                            isCanLoad = false;
+                            isLoading = true;
+                            ((ILoadMoreView) mLoadMoreView).reset();
 
-                        mLoadMoreView.measure(0, 0);
-                        ((ILoadMoreView) mLoadMoreView).loading();
-                        showLoadView();
+                            mLoadMoreView.measure(0, 0);
+                            ((ILoadMoreView) mLoadMoreView).loading();
+                            showLoadView();
 
+                        }
                     }
                 }
             }

@@ -46,9 +46,9 @@ task clean(type: Delete) {
 - [![](https://jitpack.io/v/anzaizai/EasyRefreshLayout.svg)](https://jitpack.io/#anzaizai/EasyRefreshLayout)
 
 ``` 
- compile 'com.github.anzaizai:EasyRefreshLayout:1.2.0'
+ compile 'com.github.anzaizai:EasyRefreshLayout:1.2.1'
 ```
-* last releases version is 1.2.0 can be use
+* last releases version is 1.2.1 can be use
 
 ## step 3
 
