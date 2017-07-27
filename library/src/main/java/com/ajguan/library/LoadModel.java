@@ -5,5 +5,5 @@ package com.ajguan.library;
  */
 
 public enum LoadModel {
-    NONE, COMMON_MODEL, ADVENCE_MODEL
+    NONE, COMMON_MODEL, ADVANCE_MODEL
 }

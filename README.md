@@ -136,8 +136,8 @@ task clean(type: Delete) {
     // 普通加载
   easyRefreshLayout.setLoadMoreModel(LoadModel.COMMON_MODEL);
     or
-    //预加载 adavnceCount为剩余数据为adavnceCount时触发预加载事件
-  easyRefreshLayout.setLoadMoreModel(LoadModel.ADVENCE_MODEL,adavnceCount);
+    //预加载 advanceCount为剩余数据为advanceCount时触发预加载事件
+  easyRefreshLayout.setLoadMoreModel(LoadModel.ADVANCE_MODEL,advanceCount);
 
 ```
 ## step 4 

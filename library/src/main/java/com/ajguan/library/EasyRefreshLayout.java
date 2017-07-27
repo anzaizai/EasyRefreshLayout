@@ -700,7 +700,7 @@ public class EasyRefreshLayout extends ViewGroup {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+                if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
                     if (!isLoading && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
                         final int lastVisibleItem = getLastVisiBleItem();
                         int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
@@ -728,7 +728,7 @@ public class EasyRefreshLayout extends ViewGroup {
                 super.onScrollStateChanged(recyclerView, newState);
                 // Log.i(TAG, ">>>>mDistance:" + mDistance);
                 // Log.i(TAG, ">>>>touchSlop:" + touchSlop);
-                if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+                if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
                     return;
                 }
                 if (Math.abs(mDistance) > touchSlop && mDistance < 0) {
@@ -844,7 +844,7 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     public void closeLoadView() {
-        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+        if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
             throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
 
         } else {
@@ -896,7 +896,7 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     public void loadMoreComplete() {
-        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+        if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
             isLoading = false;
         } else if (loadMoreModel == LoadModel.COMMON_MODEL) {
             loadMoreComplete(null);
@@ -905,7 +905,7 @@ public class EasyRefreshLayout extends ViewGroup {
 
     @Deprecated
     public void loadMoreComplete(EasyRefreshLayout.Event event) {
-        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+        if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
             throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
 
         } else {
@@ -915,7 +915,7 @@ public class EasyRefreshLayout extends ViewGroup {
 
     @Deprecated
     public void loadMoreComplete(final EasyRefreshLayout.Event event, long delayedTime) {
-        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+        if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
             throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
 
         } else {
@@ -947,7 +947,7 @@ public class EasyRefreshLayout extends ViewGroup {
 
 
     public void loadMoreFail() {
-        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+        if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
             throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
 
         } else {
@@ -958,7 +958,7 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     public void loadNothing() {
-        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+        if (loadMoreModel == LoadModel.ADVANCE_MODEL) {
             throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
 
         } else {
@@ -1020,15 +1020,24 @@ public class EasyRefreshLayout extends ViewGroup {
 
 
     public boolean isEnableLoadMore() {
-        return loadMoreModel == LoadModel.COMMON_MODEL || loadMoreModel == LoadModel.ADVENCE_MODEL;
+        return loadMoreModel == LoadModel.COMMON_MODEL || loadMoreModel == LoadModel.ADVANCE_MODEL;
     }
 
     public LoadModel getLoadMoreModel() {
         return loadMoreModel;
     }
 
-    public void setLoadMoreModel(LoadModel loadMoreModel, int adavenceCount) {
+    public void setLoadMoreModel(LoadModel loadMoreModel, int advanceCount) {
         this.loadMoreModel = loadMoreModel;
+        this.advanceCount = advanceCount;
+    }
+
+    public int getAdvanceCount() {
+        return advanceCount;
+    }
+
+    public void setAdvanceCount(int advanceCount) {
+        this.advanceCount = advanceCount;
     }
 
     /**

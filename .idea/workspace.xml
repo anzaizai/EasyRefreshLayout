@@ -43,11 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EasyRefreshLayout.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EasyRefreshLayout.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16233">
-              <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
+            <state relative-caret-position="342">
+              <caret line="1034" column="34" selection-start-line="1034" selection-start-column="34" selection-end-line="1034" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#29725#29726#0" expanded="true" />
@@ -58,7 +58,42 @@
                 <element signature="e#32215#32216#0" expanded="true" />
                 <element signature="e#35192#35193#0" expanded="true" />
                 <element signature="e#35228#35229#0" expanded="true" />
+                <element signature="e#35470#35471#0" expanded="true" />
+                <element signature="e#35523#35524#0" expanded="true" />
+                <element signature="e#35571#35572#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnlyRefreshActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/OnlyRefreshActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="128" column="57" selection-start-line="128" selection-start-column="57" selection-end-line="128" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RefreshHeaderView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/RefreshHeaderView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/LoadModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -73,24 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_adavnce_model.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_adavnce_model.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdavnceModelActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/AdavnceModelActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="61" column="55" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
+            <state relative-caret-position="153">
+              <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
               <folding>
                 <element signature="e#1726#2090#0" expanded="true" />
                 <element signature="e#2089#2090#0" expanded="true" />
@@ -99,12 +121,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="488">
-                <caret line="174" column="67" selection-start-line="174" selection-start-column="67" selection-end-line="174" selection-end-column="67" />
+              <first_editor relative-caret-position="250">
+                <caret line="139" column="65" selection-start-line="139" selection-start-column="65" selection-end-line="139" selection-end-column="65" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -130,29 +152,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="573">
               <caret line="99" column="0" selection-start-line="24" selection-start-column="3" selection-end-line="99" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_refresh_loading.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_refresh_loading.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewPagerActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/ViewPagerActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -2514,7 +2513,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5969685877000" />
+        <entry key="$PROJECT_DIR$" value="5969686450000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2860,15 +2859,15 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/SimpleAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/View/RefreshLoadingActivity.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/ajguan/library/LoadModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/View/OnlyLoadingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/View/OnlyRefreshActivity.java" />
-        <option value="$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_adavnce_model.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/View/AdavnceModelActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/ajguan/library/LoadModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/zaizai/com/View/AdavnceModelActivity.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java" />
       </list>
     </option>
   </component>
@@ -4002,14 +4001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/LoadModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -4018,47 +4009,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/OnlyRefreshActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="128" column="57" selection-start-line="128" selection-start-column="57" selection-end-line="128" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/RefreshHeaderView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/ViewPagerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16233">
-          <caret line="87" column="60" selection-start-line="87" selection-start-column="60" selection-end-line="87" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#29725#29726#0" expanded="true" />
-            <element signature="e#29779#29780#0" expanded="true" />
-            <element signature="e#30574#30906#0" expanded="true" />
-            <element signature="e#30905#30906#0" expanded="true" />
-            <element signature="e#31990#32216#0" expanded="true" />
-            <element signature="e#32215#32216#0" expanded="true" />
-            <element signature="e#35192#35193#0" expanded="true" />
-            <element signature="e#35228#35229#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4092,17 +4047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/AdavnceModelActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="61" column="55" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
-          <folding>
-            <element signature="e#1726#2090#0" expanded="true" />
-            <element signature="e#2089#2090#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -4122,6 +4066,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/LoadModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/OnlyLoadingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -4130,11 +4082,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/OnlyRefreshActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="128" column="57" selection-start-line="128" selection-start-column="57" selection-end-line="128" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/RefreshHeaderView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/zaizai/com/View/AdavnceModelActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+          <folding>
+            <element signature="e#1726#2090#0" expanded="true" />
+            <element signature="e#2089#2090#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="488">
-            <caret line="174" column="67" selection-start-line="174" selection-start-column="67" selection-end-line="174" selection-end-column="67" />
+          <first_editor relative-caret-position="250">
+            <caret line="139" column="65" selection-start-line="139" selection-start-column="65" selection-end-line="139" selection-end-column="65" />
             <folding />
           </first_editor>
           <second_editor />
@@ -4143,6 +4124,27 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="70" column="3" selection-start-line="70" selection-start-column="3" selection-end-line="70" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/com/ajguan/library/EasyRefreshLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="1034" column="34" selection-start-line="1034" selection-start-column="34" selection-end-line="1034" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#29725#29726#0" expanded="true" />
+            <element signature="e#29779#29780#0" expanded="true" />
+            <element signature="e#30574#30906#0" expanded="true" />
+            <element signature="e#30905#30906#0" expanded="true" />
+            <element signature="e#31990#32216#0" expanded="true" />
+            <element signature="e#32215#32216#0" expanded="true" />
+            <element signature="e#35192#35193#0" expanded="true" />
+            <element signature="e#35228#35229#0" expanded="true" />
+            <element signature="e#35470#35471#0" expanded="true" />
+            <element signature="e#35523#35524#0" expanded="true" />
+            <element signature="e#35571#35572#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

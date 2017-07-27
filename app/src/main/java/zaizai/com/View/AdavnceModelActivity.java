@@ -44,7 +44,7 @@ public class AdavnceModelActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        easyRefreshLayout.setLoadMoreModel(LoadModel.ADVENCE_MODEL, 5);
+        easyRefreshLayout.setLoadMoreModel(LoadModel.ADVANCE_MODEL, 5);
         easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
             @Override
             public void onLoadMore() {
