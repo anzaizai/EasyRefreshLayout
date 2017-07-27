@@ -46,9 +46,9 @@ task clean(type: Delete) {
 - [![](https://jitpack.io/v/anzaizai/EasyRefreshLayout.svg)](https://jitpack.io/#anzaizai/EasyRefreshLayout)
 
 ``` 
- compile 'com.github.anzaizai:EasyRefreshLayout:1.2.1'
+ compile 'com.github.anzaizai:EasyRefreshLayout:1.3.0'
 ```
-* last releases version is 1.2.1 can be use
+* last releases version is 1.3.0 can be use
 
 ## step 3
 
@@ -126,14 +126,19 @@ task clean(type: Delete) {
 * if you need only pull-down refresh funcation
 
 ```
-easyRefreshLayout.setEnableLoadMore(false);
+  easyRefreshLayout.setLoadMoreModel(LoadModel.NONE);
 
 ```
 
 * if you need only pull-up loading funcation
 
 ```
-easyRefreshLayout.setEnablePullToRefresh(false);
+    // 普通加载
+  easyRefreshLayout.setLoadMoreModel(LoadModel.COMMON_MODEL);
+    or
+    //预加载 adavnceCount为剩余数据为adavnceCount时触发预加载事件
+  easyRefreshLayout.setLoadMoreModel(LoadModel.ADVENCE_MODEL,adavnceCount);
+
 ```
 ## step 4 
 
@@ -165,3 +170,6 @@ for more information on how to use it，see demo on github [https://github.com/a
 
 ## Very grateful to the contribution of bloggers
 
+# Portal
+- [更多分享](http://www.cherylgood.cn/)
+- 个人博客：[http://www.cherylgood.cn](http://www.cherylgood.cn/)，欢迎交流学习

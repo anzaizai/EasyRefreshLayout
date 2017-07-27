@@ -17,9 +17,9 @@
         </activity>
         <activity android:name="zaizai.com.View.OnlyRefreshActivity" />
         <activity android:name="zaizai.com.View.OnlyLoadingActivity" />
-        <activity android:name="zaizai.com.View.RefreshLoadingActivity"></activity>
-        <activity android:name="zaizai.com.View.ViewPagerActivity"></activity>
-
+        <activity android:name="zaizai.com.View.RefreshLoadingActivity" />
+        <activity android:name="zaizai.com.View.ViewPagerActivity" />
+        <activity android:name="zaizai.com.View.AdavnceModelActivity"></activity>
     </application>
 
 </manifest>

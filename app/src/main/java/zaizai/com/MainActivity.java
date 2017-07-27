@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.ajguan.R;
 
+import zaizai.com.View.AdavnceModelActivity;
 import zaizai.com.View.OnlyLoadingActivity;
 import zaizai.com.View.OnlyRefreshActivity;
 import zaizai.com.View.RefreshLoadingActivity;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.refresh).setOnClickListener(this);
         findViewById(R.id.refresh_loding).setOnClickListener(this);
         findViewById(R.id.m_view_pager).setOnClickListener(this);
+        findViewById(R.id.m_adavence_model).setOnClickListener(this);
     }
 
     @Override
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.m_view_pager:
                 startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+                break;
+            case R.id.m_adavence_model:
+                startActivity(new Intent(MainActivity.this, AdavnceModelActivity.class));
                 break;
         }
 

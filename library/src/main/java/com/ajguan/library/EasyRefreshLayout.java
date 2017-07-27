@@ -78,10 +78,16 @@ public class EasyRefreshLayout extends ViewGroup {
     private boolean isLoading = false;
     private View mLoadMoreView;
     private boolean isLoadingFail = false;
-    private boolean isEnableLoadMore = true;
     private float offsetY;
     private float yDiff;
     private float mDistance;
+    //开启预加载标识位
+    //1、表示不开启
+    //2、表示开启普通加载
+    //3、表示开启预加载模式
+    private LoadModel loadMoreModel = LoadModel.COMMON_MODEL;
+    //还剩多少个item时触发预加载
+    private int advanceCount = 0;
 
     public EasyRefreshLayout(Context context) {
         this(context, null);
@@ -271,7 +277,7 @@ public class EasyRefreshLayout extends ViewGroup {
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
 
-        if ( isLoading || contentView == null) {
+        if (isLoading || contentView == null) {
             return super.dispatchTouchEvent(ev);
         }
 
@@ -392,7 +398,7 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     private void moveSpinner(float offsetY) {
-        if (!isEnablePullToRefresh){
+        if (!isEnablePullToRefresh) {
             return;
         }
         int offset = Math.round(offsetY);
@@ -694,6 +700,25 @@ public class EasyRefreshLayout extends ViewGroup {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+                    if (!isLoading && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
+                        final int lastVisibleItem = getLastVisiBleItem();
+                        int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
+                        int totalChildCount = mRecyclerView.getLayoutManager().getChildCount();
+                        if (totalChildCount > 0 && lastVisibleItem >= totalItemCount - 1 - advanceCount && totalItemCount >= totalChildCount) {
+                            isCanLoad = true;
+                        }
+                        if (isCanLoad) {
+                            isCanLoad = false;
+                            isLoading = true;
+                            if (easyEvent != null) {
+                                easyEvent.onLoadMore();
+                            }
+
+                        }
+                    }
+
+                }
 
 
             }
@@ -701,10 +726,13 @@ public class EasyRefreshLayout extends ViewGroup {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-               // Log.i(TAG, ">>>>mDistance:" + mDistance);
-               // Log.i(TAG, ">>>>touchSlop:" + touchSlop);
+                // Log.i(TAG, ">>>>mDistance:" + mDistance);
+                // Log.i(TAG, ">>>>touchSlop:" + touchSlop);
+                if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+                    return;
+                }
                 if (Math.abs(mDistance) > touchSlop && mDistance < 0) {
-                    if (!isLoading && isEnableLoadMore && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
+                    if (!isLoading && loadMoreModel == LoadModel.COMMON_MODEL && !isRefreshing && !isLoadingFail && !isNotMoreLoading) {
                         final int lastVisibleItem = getLastVisiBleItem();
                         int totalItemCount = mRecyclerView.getLayoutManager().getItemCount();
                         int totalChildCount = mRecyclerView.getLayoutManager().getChildCount();
@@ -816,15 +844,19 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     public void closeLoadView() {
-        // setTargetOffsetTopAndBottom( mLoadMoreView.getMeasuredHeight());
-        if (mLoadMoreView != null && isRecycerView) {
-            // setTargetOffsetTopAndBottom(mLoadMoreView.getMeasuredHeight());
-            mLoadMoreView.bringToFront();
-            mLoadMoreView.setTranslationY(mLoadMoreView.getMeasuredHeight());
-            resetLoadMoreState();
+        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+            throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
 
+        } else {
+            // setTargetOffsetTopAndBottom( mLoadMoreView.getMeasuredHeight());
+            if (mLoadMoreView != null && isRecycerView) {
+                // setTargetOffsetTopAndBottom(mLoadMoreView.getMeasuredHeight());
+                mLoadMoreView.bringToFront();
+                mLoadMoreView.setTranslationY(mLoadMoreView.getMeasuredHeight());
+                resetLoadMoreState();
+
+            }
         }
-
 
     }
 
@@ -864,30 +896,46 @@ public class EasyRefreshLayout extends ViewGroup {
     }
 
     public void loadMoreComplete() {
-        loadMoreComplete(null);
-    }
-
-
-    public void loadMoreComplete(EasyRefreshLayout.Event event) {
-        loadMoreComplete(event, 500);
-    }
-
-    public void loadMoreComplete(final EasyRefreshLayout.Event event, long delayedTime) {
-        ((ILoadMoreView) mLoadMoreView).loadComplete();
-
-        if (event == null) {
-            hideLoadView();
-            resetLoadMoreState();
-            return;
+        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+            isLoading = false;
+        } else if (loadMoreModel == LoadModel.COMMON_MODEL) {
+            loadMoreComplete(null);
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                event.complete();
+    }
+
+    @Deprecated
+    public void loadMoreComplete(EasyRefreshLayout.Event event) {
+        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+            throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
+
+        } else {
+            loadMoreComplete(event, 500);
+        }
+    }
+
+    @Deprecated
+    public void loadMoreComplete(final EasyRefreshLayout.Event event, long delayedTime) {
+        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+            throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
+
+        } else {
+
+            ((ILoadMoreView) mLoadMoreView).loadComplete();
+
+            if (event == null) {
                 hideLoadView();
                 resetLoadMoreState();
+                return;
             }
-        }, delayedTime);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    event.complete();
+                    hideLoadView();
+                    resetLoadMoreState();
+                }
+            }, delayedTime);
+        }
     }
 
     private void resetLoadMoreState() {
@@ -899,15 +947,25 @@ public class EasyRefreshLayout extends ViewGroup {
 
 
     public void loadMoreFail() {
-        ((ILoadMoreView) mLoadMoreView).loadFail();
-        resetLoadMoreState();
-        isLoadingFail = true;
+        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+            throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
+
+        } else {
+            ((ILoadMoreView) mLoadMoreView).loadFail();
+            resetLoadMoreState();
+            isLoadingFail = true;
+        }
     }
 
     public void loadNothing() {
-        ((ILoadMoreView) mLoadMoreView).loadNothing();
-        resetLoadMoreState();
-        isNotMoreLoading = true;
+        if (loadMoreModel == LoadModel.ADVENCE_MODEL) {
+            throw new RuntimeException("enableAdance Model cant not called closeLoadView method");
+
+        } else {
+            ((ILoadMoreView) mLoadMoreView).loadNothing();
+            resetLoadMoreState();
+            isNotMoreLoading = true;
+        }
     }
 
     private View getDefaultLoadMoreView() {
@@ -960,13 +1018,28 @@ public class EasyRefreshLayout extends ViewGroup {
         return max;
     }
 
+
     public boolean isEnableLoadMore() {
-        return isEnableLoadMore;
+        return loadMoreModel == LoadModel.COMMON_MODEL || loadMoreModel == LoadModel.ADVENCE_MODEL;
     }
 
-    public void setEnableLoadMore(boolean enable) {
-        this.isEnableLoadMore = enable;
+    public LoadModel getLoadMoreModel() {
+        return loadMoreModel;
     }
+
+    public void setLoadMoreModel(LoadModel loadMoreModel, int adavenceCount) {
+        this.loadMoreModel = loadMoreModel;
+    }
+
+    /**
+     * 默认预加载触发数量为0
+     *
+     * @param loadMoreModel
+     */
+    public void setLoadMoreModel(LoadModel loadMoreModel) {
+        this.setLoadMoreModel(loadMoreModel, 0);
+    }
+
 
     public boolean isLoading() {
         return isLoading;

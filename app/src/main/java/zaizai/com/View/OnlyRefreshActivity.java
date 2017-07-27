@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.ajguan.R;
 import com.ajguan.library.EasyRefreshLayout;
+import com.ajguan.library.LoadModel;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
@@ -125,7 +126,7 @@ public class OnlyRefreshActivity extends AppCompatActivity {
 
             }
         });
-        easyRefreshLayout.setEnableLoadMore(false);
+        easyRefreshLayout.setLoadMoreModel(LoadModel.NONE);
 //        adapter.setEnableLoadMore(true);
 //        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
 //            @Override

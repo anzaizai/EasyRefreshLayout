@@ -1,14 +1,11 @@
 package zaizai.com.View;
 
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.ajguan.R;
 import com.ajguan.library.EasyRefreshLayout;
@@ -18,10 +15,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import zaizai.com.MyAnimation;
 import zaizai.com.SimpleAdapter;
 
-public class OnlyLoadingActivity extends AppCompatActivity {
+public class AdavnceModelActivity extends AppCompatActivity {
 
     private EasyRefreshLayout easyRefreshLayout;
     private RecyclerView recyclerView;
@@ -31,24 +27,24 @@ public class OnlyLoadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_only_loading);
+        setContentView(R.layout.activity_adavnce_model);
         initView();
         initListener();
         initData();
     }
+
     private void initData() {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             list.add("EasyRefreshLayout index :" + i);
         }
-        adapter.setNewData(list);
+        adapter.getData().addAll(list);
+        adapter.notifyDataSetChanged();
+
     }
 
     private void initListener() {
-
-        easyRefreshLayout.setEnablePullToRefresh(false);
-        easyRefreshLayout.setLoadMoreModel(LoadModel.COMMON_MODEL);
-
+        easyRefreshLayout.setLoadMoreModel(LoadModel.ADVENCE_MODEL, 5);
         easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
             @Override
             public void onLoadMore() {
@@ -60,17 +56,29 @@ public class OnlyLoadingActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        easyRefreshLayout.closeLoadView();
+                        easyRefreshLayout.loadMoreComplete();
+                        int postion = adapter.getData().size();
                         adapter.getData().addAll(list);
                         adapter.notifyDataSetChanged();
                     }
-                },500);
-
+                }, 500);
 
             }
 
             @Override
             public void onRefreshing() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        List<String> list = new ArrayList<>();
+                        for (int i = 0; i < 20; i++) {
+                            list.add("this is refresh data >>>" + new Date().toLocaleString());
+                        }
+                        adapter.setNewData(list);
+                        easyRefreshLayout.refreshComplete();
+                        Toast.makeText(getApplicationContext(), "refresh success", Toast.LENGTH_SHORT).show();
+                    }
+                }, 1000);
 
             }
         });
@@ -80,13 +88,9 @@ public class OnlyLoadingActivity extends AppCompatActivity {
         easyRefreshLayout = (EasyRefreshLayout) findViewById(R.id.easylayout);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         layoutManager = new LinearLayoutManager(this);
-        layoutManager.setAutoMeasureEnabled(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         adapter = new SimpleAdapter();
-       // adapter.setDuration(1000);
-       // adapter.openLoadAnimation(new MyAnimation());
         recyclerView.setAdapter(adapter);
-        //scrollView = (ScrollView) findViewById(R.id.scrollview);
     }
 }
